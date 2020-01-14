@@ -10,15 +10,40 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/sticky-footer/">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.css"
   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
   crossorigin=""/>
     <!-- Bootstrap core CSS -->
 <link href="/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+<link rel="stylesheet" href="plugins/leaflet-search/src/leaflet-search.css" />
 
     <style>
+    .search-tooltip {
+    	width: 200px;
+    }
+    #findbox {
+    	background: #eee;
+    	border-radius:.125em;
+    	border:2px solid #1978cf;
+    	box-shadow: 0 0 8px #999;
+    	margin-bottom: 10px;
+    	padding: 2px 0;
+    	width: 600px;
+    	height: 26px;
+    }
+    .leaflet-control-search .search-cancel {
+    	position: static;
+    	float: left;
+    	margin-left: -22px;
+    }
+    .text-labels {
+            font-size: 2em;
+            font-weight: 700;
+            color: blue;
+            /* Use color, background, set margins for offset, etc */
+        }
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -52,10 +77,10 @@
   <body class="d-flex flex-column h-100">
     <!-- Begin page content -->
 <main role="main" class="flex-shrink-0">
-  <div class="container">
+  <div class="container-fluid">
      <div id="mymapid">
        </div>
-
+<div id="findbox"></div>
   </div>
 </main>
 
@@ -69,22 +94,36 @@
  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+  <!-- <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.js"
   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
   crossorigin=""></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://unpkg.com/jquery@2.2.4/dist/jquery.min.js"></script>
-    <script src="canada.js" type="text/javascript"></script>
-    <script src="e.js" type="text/javascript"></script>
+
+    <script src="Data/canada.js" type="text/javascript"></script>
+    <script src="Data/e.js" type="text/javascript"></script>
+    <script src="plugins/leaflet-search/src/leaflet-search.js"></script>
+    <script src="plugins/Leaflet.Icon.Glyph/Leaflet.Icon.Glyph.js"></script>
   <script type="text/javascript">
 
 const attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors';
 
+
+
   var tiles=L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?',{attribution});
    var mymap=L.map('mymapid').setView([55.585901, -105.750596], 4);
    tiles.addTo(mymap);
+   var textLatLng = [65.585901,-105.750596];
+           var myTextLabel = L.marker(textLatLng, {
+               icon: L.divIcon({
+                   className: 'text-labels',   // Set class for CSS styling
+                   html: 'Canadian Territorry'
+               }),
+               zIndexOffset: 1000     // Make appear above other map features
+           });
 
-
+myTextLabel.addTo(mymap);
 
 function getColor(d) {
     return d > 1000 ? '#800026' :
@@ -145,6 +184,7 @@ geojson = L.geoJson(CanData, {
   myLayer.addData(ProvData).addTo(mymap);
 
 
+
 var geojsonMarkerOptions = {
    radius: 10,
    fillColor: "#67363A",
@@ -154,15 +194,55 @@ var geojsonMarkerOptions = {
    fillOpacity: 0.8
 };
 
- L.geoJSON(ProvData, {
+ var featuresLayer = new L.geoJSON(ProvData, {
     pointToLayer: function (feature, latlng) {
-      console.log(latlng);
+      //console.log(latlng);
        var ciclemarker=  L.circleMarker(latlng,geojsonMarkerOptions).addTo(mymap);
-       var marker=L.marker(latlng).addTo(mymap);
-      marker.bindPopup('<p align=center>' + '<strong>Title: </strong>'+ '   ' + feature.properties.short + '<strong>Name: </strong>' + feature.properties.Name + '<br/>' + '<strong>Population: </strong>' + feature.properties.population);
+       var marker=L.marker(latlng, {icon: L.icon.glyph({ prefix: 'glyphicon', glyph: 'adjust' }) }).addTo(mymap);
+      marker.bindPopup('<p align=center>' + '<strong>Short: </strong>'+  feature.properties.short + '<br/>' + '<strong>Province: </strong>' + feature.properties.Name + '<br/>' + '<strong>Population: </strong>' + feature.properties.population);
       return marker;
     }
 });
 
+  var color="#1E0602"
+	var searchControl = new L.Control.Search({
+		layer: featuresLayer,
+		propertyName: 'Name',
+    position:'topleft',
+    initial: false,
+    zoom: 12,
+    marker: false,
+		moveToLocation: function(layer,latlng,  mymap) {
+			//map.fitBounds( latlng.layer.getBounds() );
+			//var zoom = mymap.getBoundsZoom(layer.getBounds());
+      //layer.getBounds();
+
+      //console.log(layer.feature);
+  			//mymap.setView(latlng, 12); // access the zoom
+
+        marker = new L.Marker(new L.latLng(latlng) );//se property searched
+		//marker.bindPopup('title: '+ title );
+		featuresLayer.addLayer(marker);
+		}
+	});
+
+	searchControl.on('search:locationfound', function(e) {
+
+		//console.log('search:locationfound', );
+
+		//map.removeLayer(this._markerSearch)
+
+		e.layer.setStyle({fillColor: '#3f0', color: '#0f0'});
+		if(e.layer._popup)
+			e.layer.openPopup();
+
+	}).on('search:collapsed', function(e) {
+
+		featuresLayer.eachLayer(function(layer) {	//restore feature color
+			featuresLayer.resetStyle(layer);
+		});
+	});
+
+	mymap.addControl( searchControl );  //inizialize search control
   </script>
 </html>
