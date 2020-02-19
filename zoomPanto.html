@@ -1,0 +1,46 @@
+<html>
+<head>
+    <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" /> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.css"
+/>
+    <!-- <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.js"></script>
+    <style>
+        #mapid { height: 500px; }
+    </style>
+</head>
+<body>
+  Zoom: <input type="text" name="zoom" id="zoom"/>
+  <br/>
+    Latitude: <input type="text" name="lat" id="lat"/>
+    <br/>
+    Longitude: <input type="text" name="lng" id="lng"/>
+    <input type="button" onclick="zoomTo()" value="zoomTo"/>
+    <div id="mapid"></div>
+
+<script>
+  var zoom=4;
+    var map = L.map('mapid').setView([55.585901,-105.750596],4);
+
+
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+
+    function zoomTo() {
+        var lat = document.getElementById("lat").value;
+        var lng = document.getElementById("lng").value;
+        var zoom = document.getElementById("zoom").value;
+
+
+    console.log(lat);
+    var position=new L.LatLng(lat, lng)
+    //L.marker(position).addTo(map);
+    map.flyTo(position,zoom);
+
+
+    }
+</script>
+</body>
+</html>

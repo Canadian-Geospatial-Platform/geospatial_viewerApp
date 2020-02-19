@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Responsive sidebar template with sliding effect and dropdown menu based on bootstrap 3">
+    <title>Sidebar template</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" rel="stylesheet">
+    <link href="style_sidebar.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.css"
+  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+  crossorigin=""/>
+
+</head>
+<body>
+<div class="page-wrapper chiller-theme toggled">
+  <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+    <i class="fas fa-bars"></i>
+  </a>
+  <nav id="sidebar" class="sidebar-wrapper">
+    <div class="sidebar-content">
+      <div class="sidebar-brand">
+        <a href="#"></a>
+        <div id="close-sidebar">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+      <div class="sidebar-header">
+        <!-- <div class="user-pic">
+          <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
+            alt="User picture">
+        </div>
+        <div class="user-info">
+          <span class="user-name">name
+            <strong>place</strong>
+          </span>
+          <span class="user-role"></span>
+          <span class="user-status">
+            <i class="fa fa-circle"></i>
+            <span> </span>
+          </span>
+
+        </div> -->
+        <h5 style="color:white">Geospatial Viewer Map</h5>
+      </div>
+      <!-- aqu comienza -->
+       <div class="container">
+      <div class="row">
+                <div class="col-xs-12">
+                  <nav>
+                    <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                      <a class="nav-item nav-link  active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Basic Map</a>
+                      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Edit</a>
+                    </div>
+                  </nav>
+                  <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                      <div class="sidebar-search">
+                        <select id="locality-dropdown" name="locality">
+                        </select>
+                        <div>
+                        </div>
+                      </div>
+                      <!-- <div class="row">
+                          <div class='col-md-12'> -->
+                            <div class="form-group">
+                                <div class="dropdown">
+                                  <button class="btn _select_color dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Green<span class="caret _right"></span>
+                                    <span _text_display="Green" class="color green"></span></button>
+                            <ul class="dropdown-menu _select_color_drop" aria-labelledby="dropdownMenu1">
+                            <li><span _text_display="Green" class="color green"></span></li>
+                            <li><span _text_display="Red" class="color red"></span></li>
+                            <li><span _text_display="Yellow" class="color yellow"></span></li>
+                            <li><span _text_display="Brown" class="color brown"></span></li>
+                            <li><span _text_display="Orange" class="color orange"></span></li>
+                            <li><span _text_display="Pink" class="color pink"></span></li>
+                            <li><span _text_display="Silver" class="color silver"></span></li>
+                            <li><span _text_display="Bule" class="color blue"></span></li>
+                            <li><span _text_display="TEAL" class="color TEAL"></span></li>
+                            <li><span _text_display="NAVY" class="color NAVY"></span></li>
+                            <li><span _text_display="PURPLE" class="color PURPLE"></span></li>
+                            <li><span _text_display="OLIVE" class="color OLIVE"></span></li>
+                            <li><span _text_display="LIME" class="color LIME"></span></li>
+                        <input type="hidden" name="_color" value="Green"></ul>
+                        </div>
+                      </div>
+                    <!-- </div>
+                 </div> -->
+                      <div class="sidebar-menu">
+                        <ul>
+                          <li class="sidebar-dropdown">
+                            <a href="#">
+                              <i class="fa fa-database"></i>
+                              <span>Dataset</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                              <ul>
+                                <li>
+                                <label class="radio">(2017/05/03)
+                                  <input type="radio" checked="checked" name="is_company">
+                                  <span class="checkround"></span>
+                                </label>
+                               </li>
+                               <li>
+                               <label class="radio">(2014/09/03)
+                                 <input type="radio" checked="checked" name="is_company">
+                                 <span class="checkround"></span>
+                               </label>
+                              </li>
+                              </ul>
+                            </div>
+                          </li>
+                          <li class="sidebar-dropdown">
+                            <a href="#">
+                              <i class="far fa-gem"></i>
+                              <span>Layers</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                              <ul>
+                                 <li>
+<label class="check ">Electrical towers
+  <input type="checkbox" checked="checked" name="is_name">
+<span class="checkmark"></span>
+</label>
+</li>
+<li>
+<label class="check">Oil wells
+  <input type="checkbox"  name="is_name">
+<span class="checkmark"></span>
+</label>
+</li>
+<li>
+<label class="check ">Higway
+  <input type="checkbox"  name="is_name">
+<span class="checkmark"></span>
+</label>
+</li>
+<li>
+<label class="check ">Pipe line
+  <input type="checkbox"  name="is_name">
+<span class="checkmark"></span>
+</label>
+</li>
+
+
+                              </ul>
+                            </div>
+                          </li>
+
+                          <li class="sidebar-dropdown">
+                            <a href="#">
+                              <i class="fa fa-globe"></i>
+                              <span>Maps</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                              <ul>
+                                <li>
+                                <label class="radio">Terrestre Map
+                                  <input type="radio" checked="checked" name="is_company">
+                                  <span class="checkround"></span>
+                                </label>
+                               </li>
+                               <li>
+                               <label class="radio">Satellite Map
+                                 <input type="radio" checked="checked" name="is_company">
+                                 <span class="checkround"></span>
+                               </label>
+                              </li>
+
+                                <li>
+                                  <label class="radio">Geospatial Map
+                                    <input type="radio" checked="checked" name="is_company">
+                                    <span class="checkround"></span>
+                                  </label>
+                                </li>
+                                <li>
+                                  <label class="radio">3D Map
+                                    <input type="radio" checked="checked" name="is_company">
+                                    <span class="checkround"></span>
+                                  </label>
+                                </li>
+                              </ul>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+
+                    </div>
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                      <div class="sidebar-menu">
+                        <ul>
+                          <li class="sidebar-dropdown">
+                            <a href="#">
+                              <i class="fa fa-draw-polygon"></i>
+                              <span>Drawing</span>
+                            </a>
+                            <div class="sidebar-submenu center">
+                                <ul >
+                                  <button  class="btn  btn-sm cust-btn btn-outline-danger" type="button" id="btn-registration">Draw Line</button>
+                                  <button  class="btn  btn-sm cust-btn btn-outline-danger" type="button" id="btn-registration">Draw Polygon</button>
+                                  <button  class="btn  btn-sm cust-btn btn-outline-danger" type="button" id="btn-registration">Draw Circle</button>
+                                  <button type="button" class="btn btn-sm cust-btn btn-outline-danger">Edit Draw Shape</button>
+                                </ul>
+                            </div>
+                          </li>
+                          <li class="sidebar-dropdown">
+                            <a href="#">
+                              <i class="fa fa-info"></i>
+                              <span>Boundary Info</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                  <li>
+                                    <label class="radio">Postal Code
+                                      <input type="radio" checked="checked" name="is_company">
+                                      <span class="checkround"></span>
+                                    </label>
+                                  </li>
+                                  <li>
+                                    <label class="radio">Place cities
+                                      <input type="radio" checked="checked" name="is_company">
+                                      <span class="checkround"></span>
+                                    </label>
+                                  </li>
+                                  <li>
+                                    <label class="radio">Parkings
+                                      <input type="radio" checked="checked" name="is_company">
+                                      <span class="checkround"></span>
+                                    </label>
+                                  </li>
+                                  <li>
+                                    <label class="radio">Military Base
+                                      <input type="radio" checked="checked" name="is_company">
+                                      <span class="checkround"></span>
+                                    </label>
+                                  </li>
+                                </ul>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      <!-- aqui termina -->
+      <!-- sidebar-header  -->
+
+      <!-- sidebar-search  -->
+
+
+      <!-- sidebar-menu  -->
+    </div>
+    <!-- sidebar-content  -->
+    <div class="sidebar-footer">
+      <a href="#">
+        <i class="fa fa-bell"></i>
+        <span class="badge badge-pill badge-warning notification">3</span>
+      </a>
+      <a href="#">
+        <i class="fa fa-envelope"></i>
+        <span class="badge badge-pill badge-success notification">7</span>
+      </a>
+      <a href="#">
+        <i class="fa fa-cog"></i>
+        <span class="badge-sonar"></span>
+      </a>
+      <a href="#">
+        <i class="fa fa-power-off"></i>
+      </a>
+    </div>
+  </nav>
+  <!-- sidebar-wrapper  -->
+  <main class="page-content">
+    <div class="container-fluid">
+      <h2>Canadian Territory Map</h2>
+      <hr>
+      <div class="row">
+        <div class="form-group col-md-12">
+          <div id="mymapid">
+            </div>
+        </div>
+        <!-- <div class="form-group col-md-12">
+          <iframe src="https://ghbtns.com/github-btn.html?user=azouaoui-med&repo=pro-sidebar-template&type=star&count=true&size=large"
+            frameborder="0" scrolling="0" width="140px" height="30px"></iframe>
+          <iframe src="https://ghbtns.com/github-btn.html?user=azouaoui-med&repo=pro-sidebar-template&type=fork&count=true&size=large"
+            frameborder="0" scrolling="0" width="140px" height="30px"></iframe>
+        </div> -->
+      </div>
+
+    </div>
+
+  </main>
+  <!-- page-content" -->
+</div>
+<!-- page-wrapper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.js"
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+        crossorigin=""></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+        <script src="plugins/leaflet-search/src/leaflet-search.js"></script>
+        <script src="plugins/Leaflet.Icon.Glyph/Leaflet.Icon.Glyph.js"></script>
+        <script src="Data/canada.js" type="text/javascript"></script>
+        <script src="Data/e.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var val_zoom=4;
+  jQuery(function ($) {
+    $(".sidebar-dropdown > a").click(function() {
+  $(".sidebar-submenu").slideUp(200);
+  if (
+    $(this)
+      .parent()
+      .hasClass("active")
+  ) {
+    $(".sidebar-dropdown").removeClass("active");
+    $(this)
+      .parent()
+      .removeClass("active");
+  } else {
+    $(".sidebar-dropdown").removeClass("active");
+    $(this)
+      .next(".sidebar-submenu")
+      .slideDown(200);
+    $(this)
+      .parent()
+      .addClass("active");
+  }
+});
+
+$("#close-sidebar").click(function() {
+  $(".page-wrapper").removeClass("toggled");
+});
+$("#show-sidebar").click(function() {
+  $(".page-wrapper").addClass("toggled");
+});
+let dropdown = $('#locality-dropdown');
+
+dropdown.empty();
+
+dropdown.append('<option selected="true" disabled>Choose State/Province</option>');
+dropdown.prop('selectedIndex', 0);
+
+const url = 'https://api.myjson.com/bins/7xq2x';
+const url1='https://api.myjson.com/bins/xz1dc';
+
+// Populate dropdown with list of provinces
+$.getJSON(url, function (data) {
+  $.each(data, function (key, entry) {
+    console.log(entry);
+    dropdown.append($('<option></option>').attr('value', entry.abreviation).text(entry.name));
+  })
+});
+$('.btn-number').click(function(e){
+  e.preventDefault();
+
+  fieldName = $(this).attr('data-field');
+  type      = $(this).attr('data-type');
+  var input = $("input[name='"+fieldName+"']");
+  var currentVal = parseInt(input.val());
+  val_zoom=currentVal;
+  if (!isNaN(currentVal)) {
+      if(type == 'minus') {
+
+          if(currentVal > input.attr('min')) {
+              input.val(currentVal - 1).change();
+          }
+          if(parseInt(input.val()) == input.attr('min')) {
+              $(this).attr('disabled', true);
+          }
+
+      } else if(type == 'plus') {
+          if(currentVal < input.attr('max')) {
+              input.val(currentVal + 1).change();
+          }
+          if(parseInt(input.val()) == input.attr('max')) {
+              $(this).attr('disabled', true);
+          }
+
+      }
+  } else {
+      input.val(0);
+  }
+});
+$('.input-number').focusin(function(){
+ $(this).data('oldValue', $(this).val());
+});
+$('.input-number').change(function() {
+
+  minValue =  parseInt($(this).attr('min'));
+  maxValue =  parseInt($(this).attr('max'));
+  valueCurrent = parseInt($(this).val());
+  val_zoom=valueCurrent;
+  //console.log(val_zoom);
+  name = $(this).attr('name');
+  if(valueCurrent >= minValue) {
+      $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
+  } else {
+      alert('Sorry, the minimum value was reached');
+      $(this).val($(this).data('oldValue'));
+  }
+  if(valueCurrent <= maxValue) {
+      $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
+  } else {
+      alert('Sorry, the maximum value was reached');
+      $(this).val($(this).data('oldValue'));
+  }
+
+
+});
+$(".input-number").keydown(function (e) {
+      // Allow: backspace, delete, tab, escape, enter and .
+      if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
+           // Allow: Ctrl+A
+          (e.keyCode == 65 && e.ctrlKey === true) ||
+           // Allow: home, end, left, right
+          (e.keyCode >= 35 && e.keyCode <= 39)) {
+               // let it happen, don't do anything
+               return;
+      }
+      // Ensure that it is a number and stop the keypress
+      if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+          e.preventDefault();
+      }
+  });
+  console.log(val_zoom);
+});//end jQuery
+
+
+const attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors';
+
+
+
+var tiles=L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?',{attribution});
+
+var mapOptions = {
+            center: [55.585901, -105.750596],
+            zoom: 4,
+            zoomControl: true
+         }
+         var mymap = new L.map('mymapid', mapOptions); // Creating a map object
+ //var mymap=L.map('mymapid').setView([55.585901, -105.750596], val_zoom);
+ console.log(mymap.getZoom());
+//mymap.setZoom(mymap.getZoom() + val_zoom);
+ tiles.addTo(mymap);
+ var textLatLng = [65.585901,-105.750596];
+         var myTextLabel = L.marker(textLatLng, {
+             icon: L.divIcon({
+                 className: 'text-labels',   // Set class for CSS styling
+                 html: 'Canadian Territorry'
+             }),
+             zIndexOffset: 1000     // Make appear above other map features
+         });
+
+myTextLabel.addTo(mymap);
+
+function getColor(d) {
+  return d > 1000 ? '#800026' :
+         d > 500  ? '#BD0026' :
+         d > 200  ? '#E31A1C' :
+         d > 100  ? '#FC4E2A' :
+         d > 50   ? '#FD8D3C' :
+         d > 20   ? '#FEB24C' :
+         d > 10   ? '#FED976' :
+                    '#FFEDA0';
+}
+function style(feature) {
+  return {
+      fillColor: getColor(feature.properties.rank),
+      weight: 2,
+      opacity: 1,
+      color: 'white',
+      dashArray: '3',
+      fillOpacity: 0.7
+  };
+}
+L.geoJson(CanData, {style:style}).addTo(mymap);
+
+function highlightFeature(e) {
+  var layer = e.target;
+  layer.setStyle({
+      weight: 5,
+      color: '#F78181',
+      dashArray: '',
+      fillOpacity: 0.7
+  });
+  if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+      layer.bringToFront();
+  }
+}
+function resetHighlight(e) {
+  geojson.resetStyle(e.target);
+}
+function zoomToFeature(e) {
+  mymap.fitBounds(e.target.getBounds());
+}
+function onEachFeature(feature, layer) {
+  layer.on({
+      mouseover: highlightFeature,
+      mouseout: resetHighlight,
+      click: zoomToFeature
+  });
+}
+
+geojson = L.geoJson(CanData, {
+  style: style,
+  onEachFeature: onEachFeature
+}).addTo(mymap);
+
+
+
+var myLayer = L.geoJSON(ProvData);
+myLayer.addData(ProvData).addTo(mymap);
+
+
+
+var geojsonMarkerOptions = {
+ radius: 10,
+ fillColor: "#67363A",
+ color: "#000",
+ weight: 1,
+ opacity: 1,
+ fillOpacity: 0.8
+};
+//mymap.zoomControl.remove();
+var featuresLayer = new L.geoJSON(ProvData, {
+  pointToLayer: function (feature, latlng) {
+    //console.log(latlng);
+     var ciclemarker=  L.circleMarker(latlng,geojsonMarkerOptions).addTo(mymap);
+     var marker=L.marker(latlng, {icon: L.icon.glyph({ prefix: 'glyphicon', glyph: 'adjust' }) }).addTo(mymap);
+    marker.bindPopup('<p align=center>' + '<strong>Short: </strong>'+  feature.properties.short + '<br/>' + '<strong>Province: </strong>' + feature.properties.Name + '<br/>' + '<strong>Population: </strong>' + feature.properties.population);
+    return marker;
+  }
+});
+
+var color="#1E0602"
+var searchControl = new L.Control.Search({
+  layer: featuresLayer,
+  propertyName: 'Name',
+  position:'topleft',
+  initial: false,
+  zoom: 12,
+  marker: false,
+  moveToLocation: function(layer,latlng,  mymap) {
+    //map.fitBounds( latlng.layer.getBounds() );
+    //var zoom = mymap.getBoundsZoom(layer.getBounds());
+    //layer.getBounds();
+
+    //console.log(layer.feature);
+      //mymap.setView(latlng, 12); // access the zoom
+
+      marker = new L.Marker(new L.latLng(latlng) );//se property searched
+  //marker.bindPopup('title: '+ title );
+  featuresLayer.addLayer(marker);
+  }
+});
+
+searchControl.on('search:locationfound', function(e) {
+
+  //console.log('search:locationfound', );
+
+  //map.removeLayer(this._markerSearch)
+
+  e.layer.setStyle({fillColor: '#3f0', color: '#0f0'});
+  if(e.layer._popup)
+    e.layer.openPopup();
+
+}).on('search:collapsed', function(e) {
+  featuresLayer.eachLayer(function(layer) {	//restore feature color
+    featuresLayer.resetStyle(layer);
+  });
+});
+
+mymap.addControl( searchControl );  //inizialize search control
+
+_colors=$('._select_color_drop li');
+    for (var i = _colors.length - 1; i >= 0; i--) {
+        $(_colors[i]).click(function(){
+            var color_text = $(this).find('span').attr('_text_display');
+            var elemnt = $(this).closest('._select_color_drop').prev();
+            elemnt.find('span.color').remove();
+            $(this).find('span').clone().appendTo(elemnt);
+            var contents = $(elemnt).contents();
+            if (contents.length > 0) {
+                if (contents.get(0).nodeType == Node.TEXT_NODE) {
+                    $(elemnt).html(color_text).append(contents.slice(1));
+                }
+            }
+            if($('[name=_color]').val() == undefined){
+                elemnt.next().append("<input type='hidden' name='_color' value='"+color_text+"'>");
+            }else{
+                $('[name=_color]').val(color_text);
+            }
+
+        })
+    };
+</script>
+</body>
+
+</html>

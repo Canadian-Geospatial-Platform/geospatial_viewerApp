@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Responsive sidebar template with sliding effect and dropdown menu based on bootstrap 3">
+    <title>Sidebar template</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" rel="stylesheet">
+    <link href="style_sidebar.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.css"
+  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+  crossorigin=""/>
+<link rel="stylesheet" type="text/css" href="css/cssbar.css">
+</head>
+
+<style>
+.bar { fill:  teal; }
+/* .title {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 400;
+} */
+</style>
+<body>
+<div class="page-wrapper chiller-theme toggled">
+  <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+    <i class="fas fa-bars"></i>
+  </a>
+  <nav id="sidebar" class="sidebar-wrapper">
+    <div class="sidebar-content">
+      <div class="sidebar-brand">
+        <a href="#"></a>
+        <div id="close-sidebar">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+      <div class="sidebar-header">
+
+        <h5 style="color:white">Geospatial Data Analisys</h5>
+
+      </div>
+      <!-- aqu comienza -->
+      <div class="sidebar-menu">
+             <ul>
+               <li class="header-menu">
+                 <span>General</span>
+               </li>
+
+               <li class="sidebar-dropdown">
+                 <a href="#">
+                   <i class="fa fa-chart-line"></i>
+                   <span>Charts</span>
+                 </a>
+                 <div class="sidebar-submenu">
+                   <ul>
+                     <li>
+                       <label class="radio">Pie chart
+                         <input type="radio"  id="piechart" value="1" name="is_chart" class="checkme">
+                         <span class="checkround"></span>
+                       </label>
+                     </li>
+                     <li>
+                         <label class="radio">Line chart
+                          <input type="radio"  id="linechart" value="2" name="is_chart" class="checkme">
+                          <span class="checkround"></span>
+                        </label>
+                     </li>
+                     <li>
+                       <label class="radio">Bar chart
+                        <input type="radio"  id="barchart" value="3" name="is_chart" class="checkme">
+                        <span class="checkround"></span>
+                      </label>
+                     </li>
+                     <li>
+                       <label class="radio">Histogram
+                        <input type="radio" id="histogram" value="4"  name="is_chart" class="checkme">
+                        <span class="checkround"></span>
+                      </label>
+                     </li>
+                   </ul>
+                 </div>
+               </li>
+             </ul>
+           </div>
+
+              </div>
+
+
+    <div class="sidebar-footer">
+
+    <button  class="btn   btn-xs btn-outline-primary"><i class="fa fa-file-export"></i></button>
+
+    <button  class="btn    btn-xs btn-outline-danger"><i class="fas fa-print"></i></button>
+      <!-- <a href="#">
+        <i class="fa fa-bell"></i>
+        <span class="badge badge-pill badge-warning notification">3</span>
+      </a>
+      <a href="#">
+        <i class="fa fa-envelope"></i>
+        <span class="badge badge-pill badge-success notification">7</span>
+      </a>
+      <a href="#">
+        <i class="fa fa-cog"></i>
+        <span class="badge-sonar"></span>
+      </a>
+      <a href="#">
+        <i class="fa fa-power-off"></i>
+      </a> -->
+    </div>
+  </nav>
+
+  <!-- sidebar-wrapper  -->
+  <main class="page-content">
+    <div class="container-fluid">
+      <h2>Geospatial Chart</h2>
+      <hr>
+      <div class="row">
+        <div class="form-group col-md-12">
+          <div id="myChart">
+            </div>
+        </div>
+        <!-- <div class="form-group col-md-12">
+          <iframe src="https://ghbtns.com/github-btn.html?user=azouaoui-med&repo=pro-sidebar-template&type=star&count=true&size=large"
+            frameborder="0" scrolling="0" width="140px" height="30px"></iframe>
+          <iframe src="https://ghbtns.com/github-btn.html?user=azouaoui-med&repo=pro-sidebar-template&type=fork&count=true&size=large"
+            frameborder="0" scrolling="0" width="140px" height="30px"></iframe>
+        </div> -->
+      </div>
+
+    </div>
+
+  </main>
+  <!-- page-content" -->
+  </div>
+<!-- page-wrapper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.js"
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+        crossorigin=""></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+
+        <script src="Data/canada.js" type="text/javascript"></script>
+        <script src="Data/e.js" type="text/javascript"></script>
+        <script src="//d3js.org/d3.v3.min.js"></script>
+        <script src="//labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+          <script src="//d3js.org/d3.v4.min.js"></script>
+<script type="text/javascript">
+var margin = {top: 20, right: 20, bottom: 30, left: 50},
+    width = 960 - margin.left - margin.right,
+    height = 750 - margin.top - margin.bottom;
+
+  jQuery(function ($) {
+    $(".sidebar-dropdown > a").click(function() {
+  $(".sidebar-submenu").slideUp(200);
+  if (
+    $(this)
+      .parent()
+      .hasClass("active")
+  ) {
+    $(".sidebar-dropdown").removeClass("active");
+    $(this)
+      .parent()
+      .removeClass("active");
+  } else {
+    $(".sidebar-dropdown").removeClass("active");
+    $(this)
+      .next(".sidebar-submenu")
+      .slideDown(200);
+    $(this)
+      .parent()
+      .addClass("active");
+  }
+});
+
+$("#close-sidebar").click(function() {
+  $(".page-wrapper").removeClass("toggled");
+});
+$("#show-sidebar").click(function() {
+  $(".page-wrapper").addClass("toggled");
+});  var margin = {top: 20, right: 20, bottom: 30, left: 50},
+      width = 660 - margin.left - margin.right,
+      height = 450 - margin.top - margin.bottom;
+
+
+$(".checkme").click(function(e) {
+   //console.log($(this));
+    if ($(this).is(":checked")) {
+      var radioValue = $("input[name='is_chart']:checked"). val();
+      console.log(radioValue);
+      $("#myChart").empty();
+        if (radioValue==3) Barchart();
+        if (radioValue==1) pieChart();
+          if (radioValue==4) histogram();
+            }
+
+
+});
+
+
+
+});//end jQuery
+
+function Barchart(){
+
+
+  // set the ranges
+  var x = d3.scaleBand()
+            .range([0, width])
+            .padding(0.1);
+  var y = d3.scaleLinear()
+            .range([height, 0]);
+
+  // append the svg object to the body of the page
+  // append a 'group' element to 'svg'
+  // moves the 'group' element to the top left margin
+
+  var svg = d3.select("#myChart").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform",
+            "translate(" + margin.left + "," + margin.top + ")");
+
+  // get the data
+  d3.json("https://api.myjson.com/bins/p4nha", function(error, data) {
+    if (error) throw error;
+    // format the data
+    data.forEach(function(d) {
+      d.sales = +d.sales;
+     console.log(d);
+    });
+    // Scale the range of the data in the domains
+    x.domain(data.map(function(d) { return d.salesperson; }));
+    y.domain([0, d3.max(data, function(d) { return d.sales; })]);
+
+    // append the rectangles for the bar chart
+    svg.selectAll(".bar")
+        .data(data)
+        .enter().append("rect")
+        .attr("class", "bar")
+        .attr("x", function(d) { return x(d.salesperson); })
+        .attr("width", x.bandwidth())
+        .attr("y", function(d) { return y(d.sales); })
+        .attr("height", function(d) { return height - y(d.sales); });
+
+    // add the x Axis
+    svg.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x));
+    // add the y Axis
+    svg.append("g")
+        .call(d3.axisLeft(y));
+
+        // text label for the y axis
+
+      svg.append("text")
+      .attr('class', 'title')
+          .attr("transform", "rotate(-90)")
+          .attr("y", 0 - margin.left)
+          .attr("x",0 - (height / 2))
+          .attr("dy", "1em")
+          .style("text-anchor", "middle")
+          .text("% Sales");
+        svg.append("text")
+              .attr('class', 'title')
+              .attr("transform",
+                  "translate(" + (width/2) + " ," +
+                                 (height + margin.top + 10) + ")")
+            .style("text-anchor", "middle")
+            .text("Sales Person");
+  });
+}
+function pieChart(){
+  var data = [
+  {name: "USA", value: 60},
+  {name: "UK", value: 20},
+  {name: "Canada", value: 30},
+  {name: "Maxico", value: 15},
+  {name: "Japan", value: 10},
+  ];
+  var text = "";
+
+  // var width = 300;
+  // var height = 400;
+  var thickness = 40;
+  var duration = 750;
+  var padding = 10;
+  var opacity = .8;
+  var opacityHover = 1;
+  var otherOpacityOnHover = .8;
+  var tooltipMargin = 13;
+
+  var radius = Math.min(width-padding, height-padding) / 2;
+  var color = d3.scaleOrdinal(d3.schemeCategory10);
+
+  var svg = d3.select("#myChart")
+  .append('svg')
+  .attr('class', 'pie')
+  .attr('width', width)
+  .attr('height', height);
+
+  var g = svg.append('g')
+  .attr('transform', 'translate(' + (width/2) + ',' + (height/2) + ')');
+
+  var arc = d3.arc()
+  .innerRadius(0)
+  .outerRadius(radius);
+
+  var pie = d3.pie()
+  .value(function(d) { return d.value; })
+  .sort(null);
+
+  var path = g.selectAll('path')
+  .data(pie(data))
+  .enter()
+  .append("g")
+  .append('path')
+  .attr('d', arc)
+  .attr('fill', (d,i) => color(i))
+  .style('opacity', opacity)
+  .style('stroke', 'white')
+  .on("mouseover", function(d) {
+  d3.selectAll('path')
+    .style("opacity", otherOpacityOnHover);
+  d3.select(this)
+    .style("opacity", opacityHover);
+
+  let g = d3.select("svg")
+    .style("cursor", "pointer")
+    .append("g")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+
+  g.append("text")
+    .attr("class", "name-text")
+    .text(`${d.data.name} (${d.data.value})`)
+    .attr('text-anchor', 'middle');
+
+  let text = g.select("text");
+  let bbox = text.node().getBBox();
+  let padding = 2;
+  g.insert("rect", "text")
+    .attr("x", bbox.x - padding)
+    .attr("y", bbox.y - padding)
+    .attr("width", bbox.width + (padding*2))
+    .attr("height", bbox.height + (padding*2))
+    .style("fill", "white")
+    .style("opacity", 0.75);
+  })
+  .on("mousemove", function(d) {
+    let mousePosition = d3.mouse(this);
+    let x = mousePosition[0] + width/2;
+    let y = mousePosition[1] + height/2 - tooltipMargin;
+
+    let text = d3.select('.tooltip text');
+    let bbox = text.node().getBBox();
+    if(x - bbox.width/2 < 0) {
+      x = bbox.width/2;
+    }
+    else if(width - x - bbox.width/2 < 0) {
+      x = width - bbox.width/2;
+    }
+
+    if(y - bbox.height/2 < 0) {
+      y = bbox.height + tooltipMargin * 2;
+    }
+    else if(height - y - bbox.height/2 < 0) {
+      y = height - bbox.height/2;
+    }
+
+    d3.select('.tooltip')
+      .style("opacity", 1)
+      .attr('transform',`translate(${x}, ${y})`);
+  })
+  .on("mouseout", function(d) {
+  d3.select("svg")
+    .style("cursor", "none")
+    .select(".tooltip").remove();
+  d3.selectAll('path')
+    .style("opacity", opacity);
+  })
+  .on("touchstart", function(d) {
+  d3.select("svg")
+    .style("cursor", "none");
+  })
+  .each(function(d, i) { this._current = i; });
+
+  let legend = d3.select("#myChart").append('div')
+  .attr('class', 'legend')
+  .style('margin-top', '30px');
+
+  let keys = legend.selectAll('.key')
+  .data(data)
+  .enter().append('div')
+  .attr('class', 'key')
+  .style('display', 'flex')
+  .style('overflow', 'auto')
+  .style('float', 'right')
+  .style('align-items', 'center')
+  .style('margin-right', '20px');
+
+
+  keys.append('div')
+  .attr('class', 'symbol')
+  .style('height', '10px')
+  .style('width', '10px')
+  .style('margin', '5px 5px')
+  .style('background-color', (d, i) => color(i));
+
+  keys.append('div')
+  .attr('class', 'name')
+  .text(d => `${d.name} (${d.value})`);
+
+  keys.exit().remove();
+
+}
+function histogram(){
+  var margin = {top: 40, right: 20, bottom: 30, left: 40},
+      width = 960 - margin.left - margin.right,
+      height = 500 - margin.top - margin.bottom;
+
+  var formatPercent = d3.format(".0%");
+
+  var x = d3.scale.ordinal()
+      .rangeRoundBands([0, width], .1);
+
+  var y = d3.scale.linear()
+      .range([height, 0]);
+
+  var xAxis = d3.svg.axis()
+      .scale(x)
+      .orient("bottom");
+
+  var yAxis = d3.svg.axis()
+      .scale(y)
+      .orient("left")
+      .tickFormat(formatPercent);
+
+  var tip = d3.tip()
+    .attr('class', 'd3-tip')
+    .offset([-10, 0])
+    .html(function(d) {
+      return "<strong>Frequency:</strong> <span style='color:red'>" + d.frequency + "</span>";
+    })
+
+  var svg = d3.select("#myChart").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  svg.call(tip);
+
+  d3.tsv("Data/datatooltips.csv", type, function(error, data) {
+    x.domain(data.map(function(d) { return d.letter; }));
+    y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
+
+    svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis);
+
+    svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis)
+      .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", ".71em")
+        .style("text-anchor", "end")
+        .text("Frequency");
+
+    svg.selectAll(".bar")
+        .data(data)
+      .enter().append("rect")
+        .attr("class", "bar")
+        .attr("x", function(d) { return x(d.letter); })
+        .attr("width", x.rangeBand())
+        .attr("y", function(d) { return y(d.frequency); })
+        .attr("height", function(d) { return height - y(d.frequency); })
+        .on('mouseover', tip.show)
+        .on('mouseout', tip.hide)
+
+  });
+
+  function type(d) {
+    d.frequency = +d.frequency;
+    return d;
+  }
+
+}
+</script>
+</body>
+
+</html>
