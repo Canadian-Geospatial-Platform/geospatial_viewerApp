@@ -14,7 +14,7 @@ var ProvData =   {
      },
      "geometry": {
        "type": "Point",
-       "coordinates": [-113.423,53.514]
+       "coordinates": [-116.5765035,53.9332706]
      }
    },
    {
@@ -30,7 +30,7 @@ var ProvData =   {
      },
      "geometry": {
        "type": "Point",
-       "coordinates": [-127.134,54.521]
+       "coordinates": [-127.6476206,53.7266683]
      }
    },
    {
@@ -46,7 +46,7 @@ var ProvData =   {
      },
      "geometry": {
        "type": "Point",
-       "coordinates": [-96.899,54.927]
+       "coordinates": [-98.8138763,53.7608608]
      }
    },
    {
