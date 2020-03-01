@@ -202,7 +202,52 @@
                               </ul>
                             </div>
                           </li>
-                        </ul>
+
+                          <li class="sidebar-dropdown">
+                            <a href="#">
+                              <i class="fa fa-file-export"></i>
+                              <span>Export to</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                              <ul>
+                                <li>
+                                <label class="radio">Image
+                                  <input type="radio" checked="checked" class="clickexport" id="exportpng" value="1"  name="clickexport">
+                                  <span class="checkround"></span>
+                                </label>
+                               </li>
+                               <li>
+                               <label class="radio">XML
+                                 <input type="radio" checked="checked"  class="clickexport" id="exportxml" value="2"  name="clickexport">
+                                 <span class="checkround"></span>
+                               </label>
+                              </li>
+                               <li>
+                              <label class="radio">GeoJson
+                                <input type="radio" checked="checked"  class="clickexport" id="exportgeojson" value="3"  name="clickexport">
+                                <span class="checkround"></span>
+                              </label>
+                             </li>
+                             <li>
+                            <label class="radio">PDF Format
+                              <input type="radio" checked="checked"  class="clickexport" id="exportgeojson" value="4"  name="clickexport">
+                              <span class="checkround"></span>
+                            </label>
+                           </li>
+                              </ul>
+
+                                <div class="col-md-4">
+                              <button class="btn btn-round-xs btn-xs mr-2 mb-2 btn-icon btn-outline-primary" id="btnexport" >
+                                <span class="btn-inner-icon"><i class="fa fa-file-export"></i></span>
+                                <span class="btn-inner-text">Apply</span>
+                              </button>
+                            </div>
+
+                            </div>
+
+                            </li>
+                          </ul>
+
                       </div>
 
                     </div>
@@ -264,8 +309,10 @@
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
+              </div><!-- row -->
+
+
+          </div> <!-- container -->
       <!-- aqui termina -->
       <!-- sidebar-header  -->
 
@@ -276,10 +323,9 @@
     </div>
     <!-- sidebar-content  -->
     <div class="sidebar-footer">
-      <!-- <a href="#">
-        <i class="fa fa-bell"></i>
-        <span class="badge badge-pill badge-warning notification">3</span>
-      </a>
+      <!-- <button class="btn mr-2 mb-2 btn-icon-only btn-outline-primary" type="button">
+                 <span class="btn-inner-icon"><i class="fa fa-file-export"></i></span>
+             </button>
       <a href="#">
         <i class="fa fa-envelope"></i>
         <span class="badge badge-pill badge-success notification">7</span>
@@ -321,6 +367,8 @@
   </main>
   <!-- page-content" -->
 </div>
+<div id='snapshot'></div>
+<canvas id="myCanvas"  width="5" height="5" ></canvas>
 <!-- page-wrapper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
@@ -337,23 +385,53 @@
         <script src="plugins/Leaflet-Pancontrol/src/L.Control.Pan.js"></script>
         <script src="plugins/Leaflet.Icon.Glyph/Leaflet.Icon.Glyph.js"></script>
         <!-- <script src="plugins/Leaflet-Draw/src/Leaflet.draw.js"></script> -->
-
+        <script src="plugins/leaflet-eazyprinter/bundle.js"></script>
+        <!-- <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-image/v0.0.4/leaflet-image.js'></script> -->
           <!-- <script src="plugins/Leaflet-Draw/src/Toolbar.js"></script> -->
             <!-- <script src="plugins/Leaflet-Draw/src/Tooltip.js"></script> -->
             <!-- <script src="plugins/Leaflet-Draw/src/Control.Draw.js"></script> -->
           <!-- <script src="plugins/Leaflet-Draw/src/Leaflet.Draw.Event.js"></script> -->
           <!-- <script src="plugins/Leaflet-Draw/src/draw/handler/Draw.Polyline.js"></script> -->
+        <!--   <script src="plugins/Leaflet-Image/leaflet-image.js"></script>-->
           <script src="Data/canada.js" type="text/javascript"></script>
+          <script src="https://unpkg.com/leaflet-image@latest/leaflet-image.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha256-DupmmuWppxPjtcG83ndhh/32A9xDMRFYkGOVzvpfSIk=" crossorigin="anonymous"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js" integrity="sha256-gJWdmuCRBovJMD9D/TVdo4TIK8u5Sti11764sZT1DhI=" crossorigin="anonymous"></script>
+  <script>L_PREFER_CANVAS = true</script>
         <script src="Data/e.js" type="text/javascript"></script>
-
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script> -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
         <script src="https://unpkg.com/esri-leaflet@2.3.3/dist/esri-leaflet.js"
         integrity="sha512-cMQ5e58BDuu1pr9BQ/eGRn6HaR6Olh0ofcHFWe5XesdCITVuSBiBZZbhCijBe5ya238f/zMMRYIMIIg1jxv4sQ=="
         crossorigin=""></script>
 <script type="text/javascript">
+var snapshot = document.getElementById('snapshot');
+
+//var context = canvas.getContext('2d');
   var val_zoom=4;
 
   jQuery(function ($) {
+
+    var printer = L.easyPrint({
+      		tileLayer: tiles,
+      		sizeModes: ['Current'],
+      		filename: 'myMap',
+      		exportOnly: true,
+          hidden:true,
+      		hideControlContainer: true
+		}).addTo(mymap);
+
+    // function doImage(err, canvas){
+    //   var img = document.createElement('img');
+    //     var dimensions = mymap.getSize();
+    //     img.width = dimensions.x;
+    //     img.height = dimensions.y;
+    //     console.log(canvas);
+    //     img.src = canvas.toDataURL();
+    //    snapshot.innerHTML = '';
+    //    snapshot.appendChild(img);
+    // }
+
       var arr=[];
     $(".sidebar-dropdown > a").click(function() {
   $(".sidebar-submenu").slideUp(200);
@@ -464,7 +542,7 @@ $.getJSON(url2, function (data) {
       var layer;
       var layerLabels;
       if (layer) {
-        map.removeLayer(layer);
+        mymap.removeLayer(layer);
       }
       layer = L.esri.basemapLayer(this.value).addTo(mymap);
       // if (layerLabels) {
@@ -516,6 +594,56 @@ $(this).addClass('focus').siblings().removeClass('focus');
       circleDrawer.enable();
 
   });
+});
+
+function downloadMap(err, canvas) {
+    // var imgData = canvas.toDataURL("image/jpeg", 1.0);
+    // var dimensions = mymap.getSize();
+    // //var pdf = new jsPDF('l', 'pt', 'letter');
+    // var pdf = new jsPDF();
+    // pdf.addImage(imgData, 'PNG', 10, 10, dimensions.x * 0.5, dimensions.y * 0.5);
+    // //pdf.addImage(imgData, 'PNG',10, 10);
+    // //cover.className = '';
+    // pdf.save("mymapdownloaded.pdf");
+    var imgData = canvas.toDataURL("image/svg+xml", 1.0);
+         var dimensions = mymap.getSize();
+
+         var pdf = new jsPDF('l', 'pt', 'letter');
+         pdf.addImage(imgData, 'PNG', 10, 10, dimensions.x * 0.5, dimensions.y * 0.5);
+
+         cover.className = '';
+
+         pdf.save("download.pdf");
+  };
+
+$('#btnexport').click(function(){
+  var radioValue = $("input[name='clickexport']:checked").val();
+  if (radioValue==1) {
+    //export map to an image
+     printer.printMap('CurrentSize', 'MyManualPrint')
+      // leafletImage(mymap, downloadMap);
+  }
+  if (radioValue==4) {
+    //export to pdf
+      //leafletImage(mymap, downloadMap);
+      //  var imgData = document.createElement('img');
+      var canvas = document.getElementById('myCanvas');
+          imgData = canvas.toDataURL("image/svg+xml",1.0);
+          //var dataURL = canvas.toDataURL();
+
+        var dimensions = mymap.getSize();
+        //var pdf = new jsPDF('p', 'mm');
+        var pdf = new jsPDF('l', 'pt', 'letter');
+        pdf.addImage(imgData, 'PNG', 10, 10, dimensions.x * 0.5, dimensions.y * 0.5);
+        //pdf.addImage(imgData, 'JPG',0, 0);
+      //  pdf.addImage(imgData, 'PNG', 10, 10);
+        //snapshot.appendChild(imgData);
+      //  cover.className = '';
+//  console.log(imgData);
+  console.log(pdf);
+        pdf.save("samplefile.pdf");
+  }
+  console.log(radioValue);
 });
 });//end jQuery
 
@@ -785,6 +913,8 @@ _colors=$('._select_color_drop li');
 
         })
     };
+
+
 </script>
 </body>
 
