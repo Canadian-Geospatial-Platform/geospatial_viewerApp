@@ -7,7 +7,7 @@
  ![Image of Yaktocat](https://github.com/Canadian-Geospatial-Platform/geospatial_viewerApp/blob/master/img/3.png)
  ![Image of Yaktocat](https://github.com/Canadian-Geospatial-Platform/geospatial_viewerApp/blob/master/img/drawcircle.png)
  
- ##Map exported by Export Menu Option
+ ## Map exported by Export Menu Option
   ![Image of Yaktocat](https://github.com/Canadian-Geospatial-Platform/geospatial_viewerApp/blob/master/img/exported_toPNG.png) 
 
 
