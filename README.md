@@ -1,4 +1,10 @@
 ## geospatial_viewerApp Repository
+## Instalation.
+# Just clone this repository in you local HDD and access to the 
+- geospatialViewer_map.html for Mapping Viewer
+- geospatialData_analisys.html for Data Analisys Viewer.
+
+
 ## select a province with a color to show on the map with different marker
  ![Image of Yaktocat](https://github.com/Canadian-Geospatial-Platform/geospatial_viewerApp/blob/master/img/4.png)
 
