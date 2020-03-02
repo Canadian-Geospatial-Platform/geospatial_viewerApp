@@ -1,5 +1,5 @@
 ## geospatial_viewerApp Repository
-
+## select a province with a color to show on the map with different marker
  ![Image of Yaktocat](https://github.com/Canadian-Geospatial-Platform/geospatial_viewerApp/blob/master/img/4.png)
 
  
