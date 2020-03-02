@@ -1,6 +1,6 @@
 ## geospatial_viewerApp Repository
-## Instalation.
-# Just clone this repository in you local HDD and access to the 
+## Installation.
+### Just clone this repository in you local HDD and access to the 
 - geospatialViewer_map.html for Mapping Viewer
 - geospatialData_analisys.html for Data Analisys Viewer.
 
