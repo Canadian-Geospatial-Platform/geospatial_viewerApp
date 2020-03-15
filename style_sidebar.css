@@ -853,3 +853,7 @@ body{margin-top:20px;}
   background-color: #b91773;
   border-color: #fff;
 } */
+.my-label {
+    position: absolute;
+    font-size:9px;
+}

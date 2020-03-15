@@ -112,3 +112,8 @@ font-size: 3em;
    height: 34px;
    -webkit-appearance: none;
 }
+
+.my-label {
+    position: absolute;   
+    font-size:10px;
+}

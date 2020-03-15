@@ -75,25 +75,23 @@
                                 <div class="dropdown">
                                   <button class="btn _select_color dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Green
                                     <span _text_display="Green" class="color green"></span></button>
-                            <ul class="dropdown-menu _select_color_drop" aria-labelledby="dropdownMenu1">
-                            <li><span _text_display="Green" class="color green"></span></li>
-                            <li><span _text_display="Red" class="color red"></span></li>
-                            <li><span _text_display="Yellow" class="color yellow"></span></li>
-                            <li><span _text_display="Brown" class="color brown"></span></li>
-                            <li><span _text_display="Orange" class="color orange"></span></li>
-                            <li><span _text_display="Pink" class="color pink"></span></li>
-                            <li><span _text_display="Silver" class="color silver"></span></li>
-                            <li><span _text_display="Bule" class="color blue"></span></li>
-                            <li><span _text_display="TEAL" class="color TEAL"></span></li>
-                            <li><span _text_display="NAVY" class="color NAVY"></span></li>
-                            <li><span _text_display="PURPLE" class="color PURPLE"></span></li>
-                            <li><span _text_display="OLIVE" class="color OLIVE"></span></li>
-                            <li><span _text_display="LIME" class="color LIME"></span></li>
-                        <input type="hidden" name="_color" value="Green"></ul>
+                                      <ul class="dropdown-menu _select_color_drop" aria-labelledby="dropdownMenu1">
+                                      <li><span _text_display="Green" class="color green"></span></li>
+                                      <li><span _text_display="Red" class="color red"></span></li>
+                                      <li><span _text_display="Yellow" class="color yellow"></span></li>
+                                      <li><span _text_display="Brown" class="color brown"></span></li>
+                                      <li><span _text_display="Orange" class="color orange"></span></li>
+                                      <li><span _text_display="Pink" class="color pink"></span></li>
+                                      <li><span _text_display="Silver" class="color silver"></span></li>
+                                      <li><span _text_display="Bule" class="color blue"></span></li>
+                                      <li><span _text_display="TEAL" class="color TEAL"></span></li>
+                                      <li><span _text_display="NAVY" class="color NAVY"></span></li>
+                                      <li><span _text_display="PURPLE" class="color PURPLE"></span></li>
+                                      <li><span _text_display="OLIVE" class="color OLIVE"></span></li>
+                                      <li><span _text_display="LIME" class="color LIME"></span></li>
+                              <input type="hidden" name="_color" value="Green"></ul>
                         </div>
                       </div>
-                    <!-- </div>
-                 </div> -->
                       <div class="sidebar-menu">
                         <ul>
                           <li class="sidebar-dropdown">
@@ -259,15 +257,10 @@
                               <i class="fa fa-draw-polygon"></i><span>Drawing</span>
                             </a>
                             <div class="sidebar-submenu center">
-
                                   <button  class="btn  btn-sm cust-btn btn-outline-danger" type="button" id="btn-drawLine" name="btndrawline" value="DrawLine">Draw Line</button>
-
                                   <button  class="btn  btn-sm cust-btn btn-outline-danger" type="button" id="btn-drawPolygon" name="btndrawpolygon" value="DrawPolygon">Draw Polygon</button>
-
                                   <button  class="btn  btn-sm cust-btn btn-outline-danger" type="button" id="btn-drawCircle" name="btndrawcircle" value="DrawCircle">Draw Circle</button>
-
-                                  <button type="button" class="btn btn-sm cust-btn btn-outline-danger">Edit Draw Shape</button>
-
+                                  <!-- <button class="btn btn-sm cust-btn btn-outline-danger" type="button"   id="btn-editLayers" name="btnEditLayer" value="EditLayers">Edit Draw Shape</button> -->
                             </div>
                           </li>
                           <li class="sidebar-dropdown">
@@ -310,8 +303,6 @@
                   </div>
                 </div>
               </div><!-- row -->
-
-
           </div> <!-- container -->
       <!-- aqui termina -->
       <!-- sidebar-header  -->
@@ -384,6 +375,8 @@
         <script src="plugins/Leaflet-EaziButtons/src/leaflet-EaziButtons.js"></script>
         <script src="plugins/Leaflet-Pancontrol/src/L.Control.Pan.js"></script>
         <script src="plugins/Leaflet.Icon.Glyph/Leaflet.Icon.Glyph.js"></script>
+        <script src="plugins/Leaflet.Editable/src/Leaflet.Editable.js"></script>
+         <script src="//npmcdn.com/leaflet.path.drag/src/Path.Drag.js"></script>
         <!-- <script src="plugins/Leaflet-Draw/src/Leaflet.draw.js"></script> -->
         <script src="plugins/leaflet-eazyprinter/bundle.js"></script>
         <!-- <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-image/v0.0.4/leaflet-image.js'></script> -->
@@ -394,7 +387,9 @@
           <!-- <script src="plugins/Leaflet-Draw/src/draw/handler/Draw.Polyline.js"></script> -->
         <!--   <script src="plugins/Leaflet-Image/leaflet-image.js"></script>-->
           <script src="Data/canada.js" type="text/javascript"></script>
+          <script src="js/LeafletMap.js" type="text/javascript"></script>
           <script src="https://unpkg.com/leaflet-image@latest/leaflet-image.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha256-DupmmuWppxPjtcG83ndhh/32A9xDMRFYkGOVzvpfSIk=" crossorigin="anonymous"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js" integrity="sha256-gJWdmuCRBovJMD9D/TVdo4TIK8u5Sti11764sZT1DhI=" crossorigin="anonymous"></script>
   <script>L_PREFER_CANVAS = true</script>
@@ -406,35 +401,13 @@
         crossorigin=""></script>
 <script type="text/javascript">
 var snapshot = document.getElementById('snapshot');
-
+var mymap=CustomleafletMap._initialzation();
 //var context = canvas.getContext('2d');
   var val_zoom=4;
-
   jQuery(function ($) {
-
-    var printer = L.easyPrint({
-      		tileLayer: tiles,
-      		sizeModes: ['Current'],
-      		filename: 'myMap',
-      		exportOnly: true,
-          hidden:true,
-      		hideControlContainer: true
-		}).addTo(mymap);
-
-    // function doImage(err, canvas){
-    //   var img = document.createElement('img');
-    //     var dimensions = mymap.getSize();
-    //     img.width = dimensions.x;
-    //     img.height = dimensions.y;
-    //     console.log(canvas);
-    //     img.src = canvas.toDataURL();
-    //    snapshot.innerHTML = '';
-    //    snapshot.appendChild(img);
-    // }
-
       var arr=[];
     $(".sidebar-dropdown > a").click(function() {
-  $(".sidebar-submenu").slideUp(200);
+    $(".sidebar-submenu").slideUp(200);
   if (
     $(this)
       .parent()
@@ -464,29 +437,11 @@ $("#show-sidebar").click(function() {
 let dropdown = $('#locality-dropdown');
 
 dropdown.empty();
-
 dropdown.append('<option selected="true" disabled>Choose State/Province</option>');
 dropdown.prop('selectedIndex', 0);
-
 const url = 'https://api.myjson.com/bins/7xq2x';
 const url1='https://api.myjson.com/bins/xz1dc';
 const url2='https://api.myjson.com/bins/1akrv0';
-
-// Populate dropdown with list of provinces
-// $.getJSON(url1,function (data) {
-//     var i=0;
-//   $.each(data, function (key, entry) {
-//
-//     $.each(entry,function(v,j){
-//
-//       console.log(j[i]);
-//       console.log(i);
-//       i=i+1;
-//     });
-//
-//   });
-// });
-
 $.getJSON(url2, function (data) {
   $.each(data, function (key, entry) {
     //console.log(entry);
@@ -496,16 +451,12 @@ $.getJSON(url2, function (data) {
 
   $('#locality-dropdown').change(
     function() {
-
-        //var val1 = $('#pick option:selected').val(); $('#locality-dropdown option:selected').val();
         var val2 = this.value;
         console.log(val2);
         $.getJSON(url2, function (data) {
         $.each(data, function(i, v) {
             if (v.short == val2) {
-                //alert(v.latitude + " " + " "+ v.longitude  );
                 var position=new L.LatLng(v.latitude, v.longitude )
-                //L.marker(position).addTo(map);
                 var greenIcon = new L.Icon({
                     iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
                     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -514,7 +465,6 @@ $.getJSON(url2, function (data) {
                     popupAnchor: [1, -34],
                     shadowSize: [41, 41]
                   });
-
                   if (arr.length===0)  {
                              arr.push(position);
                              //console.log(arr);
@@ -526,7 +476,6 @@ $.getJSON(url2, function (data) {
                     arr.push(position);
                     console.log(position);
                      markers(k,v);
-
                   }
                 L.marker(position, {icon: greenIcon}).addTo(mymap);
                 mymap.flyTo(position,4);
@@ -538,16 +487,12 @@ $.getJSON(url2, function (data) {
     });
 
     $(".clickmap").click(function(){
-      //if (this.id==1)
       var layer;
       var layerLabels;
       if (layer) {
         mymap.removeLayer(layer);
       }
       layer = L.esri.basemapLayer(this.value).addTo(mymap);
-      // if (layerLabels) {
-      //   map.removeLayer(layerLabels);
-      // }
       console.log(this.value);
     });
 function markers(k,v){
@@ -556,222 +501,186 @@ function markers(k,v){
   marker.bindPopup('<p align=center>' + '<strong>Short: </strong>'+  v.short + '<br/>' + '<strong>Province: </strong>' + v.capital + '<br/>' + '<strong>Population: </strong>' + v.population);
   return marker
 };
-// Define you draw handler somewhere where you click handler can access it. N.B. pass any draw options into the handler
-  var polylineDrawer = new L.Draw.Polyline(mymap);
 
-// Assumming you have a Leaflet map accessible
-mymap.on('draw:created', function (e) {
-    var type = e.layerType,
-        layer = e.layer;
-    layer.addTo(mymap);
-  });
 
-// Click handler for you button to start drawing polygons
-// $('#draw_poly').click(function() {
-//
-// });
-$(".btn-outline-danger").click(function(){
-$(this).addClass('focus').siblings().removeClass('focus');
-  $("#btn-drawLine").click(function(){
 
-    // var polyline = new L.Draw.Polyline(mymap, {
-    //   shapeOptions: {
-    //     color: '#181616'
-    //   }
-    // });
-  //  var polylineDrawer = new L.Draw.Polyline(mymap);
-      polylineDrawer.enable();
-  })
-  console.log(this.value);
   $("#btn-drawPolygon").click(function() {
-    //$(this).addClass('focus');
-    var polygonDrawer = new L.Draw.Polygon(mymap);
-      polygonDrawer.enable();
-  });
+        CustomleaflteMapEdit.CreateShape("polygon");
+    });
 
   $("#btn-drawCircle").click(function() {
-    var circleDrawer = new L.Draw.Circle(mymap);
-      circleDrawer.enable();
-
+      CustomleaflteMapEdit.CreateShape("circle");
   });
+  $("#btn-drawLine").click(function(){
+      CustomleaflteMapEdit.CreateShape("line");
+  })
+  mymap.on('editable:editing', function (e) {
+        e.layer.setStyle({color: 'DarkBlue'});
+    });
+
+  $("#btn-editLayers").click(function(){
+    console.log("Edit Layers");
+   });
+$(".btn-outline-danger").click(function(){
+  $(this).addClass('focus').siblings().removeClass('focus');
 });
 
-function downloadMap(err, canvas) {
-    // var imgData = canvas.toDataURL("image/jpeg", 1.0);
-    // var dimensions = mymap.getSize();
-    // //var pdf = new jsPDF('l', 'pt', 'letter');
-    // var pdf = new jsPDF();
-    // pdf.addImage(imgData, 'PNG', 10, 10, dimensions.x * 0.5, dimensions.y * 0.5);
-    // //pdf.addImage(imgData, 'PNG',10, 10);
-    // //cover.className = '';
-    // pdf.save("mymapdownloaded.pdf");
-    var imgData = canvas.toDataURL("image/svg+xml", 1.0);
-         var dimensions = mymap.getSize();
+ var editableLayers =  new L.FeatureGroup();
+ var group1= new L.FeatureGroup();
+ mymap.addLayer(editableLayers);
 
-         var pdf = new jsPDF('l', 'pt', 'letter');
-         pdf.addImage(imgData, 'PNG', 10, 10, dimensions.x * 0.5, dimensions.y * 0.5);
+ mymap.on('draw:created', function (e) {
+  console.log("on draw created event");
+    var type = e.layerType,
+        layer = e.layer;
+        console.log(type);
+        if (type=='circle'){
+          editableLayers.addLayer(layer);
+          theRadius = layer.getRadius()/1000;
+          var _radius=Math.round(theRadius*(Math.pow(10,3)))/(Math.pow(10,3));
+          layer.bindTooltip( _radius.toFixed(2) + " Kms", {'permanent': true, 'interactive': true, 'direction':'top', 'className': "my-label"});
+      //  bootbox.prompt({title: "Any information?", closeButton: false, callback: putTooltip});
+              //function putTooltip(result) {
+            //layer.bindTooltip(result, {'permanent': true, 'interactive': true, 'direction':'center'});
+          //  layer.bindTooltip(Number.parseFloat(theRadius).toString(), {'permanent': true, 'interactive': true, 'direction':'top'});
+          //  }
 
-         cover.className = '';
+      }
+      //   if (type=='circle'){
+      //     theCenterPt = layer.getLatLng();
+      //     center = [theCenterPt.lng,theCenterPt.lat];
+      //     theRadius = layer.getRadius();
+      //     editableLayers.addLayer(layer);
+      //     group1.addLayer(layer);
+      //     mymap.addLayer(group1);
+      //    var circle = L.circle(theCenterPt, theRadius,{units: 'meters'}).addTo(editableLayers);
+      //    bootbox.prompt({title: "Any information?", closeButton: false, callback: putTooltip});
+      //      function putTooltip(result) {
+      //    circle.bindTooltip(result, {'permanent': true, 'interactive': true});
+      //    }
+      //   //circle.enableEdit();
+      //   if (mymap.hasLayer(group1)) {
+      //     console.log("Cirle Draw to delete");
+      //     mymap.removeLayer(group1);
+      //   }
+      //   circle.on('dblclick', L.DomEvent.stop).on('dblclick', circle.toggleEdit);
+      //  circle.on('click', function (e) {
+      //    circle.enableEdit();
+      //       if ((e.originalEvent.ctrlKey || e.originalEvent.metaKey) && this.editEnabled()) {
+      //         this.editor.newHole(e.latlng);
+      //       }
+      //   });
+      // };//type circle
+       mymap.addLayer(layer);
+  });
 
-         pdf.save("download.pdf");
-  };
-
+// function CreateShape(ShapeType){
+//   if (ShapeType=="circle"){
+//     CreateCircle();
+//    }
+//    if (ShapeType=="polygon"){
+//     CreatePolygon();
+//   }
+//   if (ShapeType=="line"){
+//     CreateLine();
+//  }
+// };
+// function CreateLine(){
+//   var polyline = new L.Draw.Polyline(mymap)
+//       polylineDrawer.enable();
+//    };
+// function  CreatePolygon() {
+//   var polygonDrawer = new L.Draw.Polygon(mymap);
+//       polygonDrawer.enable();
+// };
+//
+// function CreateCircle(){
+//   var theRadius;
+//   var theCenterPt;
+//   var center;
+//   var circleDrawer = new L.Draw.Circle(mymap);
+//   circleDrawer.enable();
+// };
+//
+//   mymap.on('draw:created', function (e) {
+//     console.log("on draw created event");
+//       var type = e.layerType,
+//           layer = e.layer;
+//           console.log(type);
+//           if (type=='circle'){
+//             editableLayers.addLayer(layer);
+//             theRadius = layer.getRadius()/1000;
+//             var _radius=Math.round(theRadius*(Math.pow(10,3)))/(Math.pow(10,3));
+//             layer.bindTooltip( _radius.toFixed(2) + " Kms", {'permanent': true, 'interactive': true, 'direction':'top', 'className': "my-label"});
+//         //  bootbox.prompt({title: "Any information?", closeButton: false, callback: putTooltip});
+//                 //function putTooltip(result) {
+//               //layer.bindTooltip(result, {'permanent': true, 'interactive': true, 'direction':'center'});
+//             //  layer.bindTooltip(Number.parseFloat(theRadius).toString(), {'permanent': true, 'interactive': true, 'direction':'top'});
+//             //  }
+//
+//         }
+//         //   if (type=='circle'){
+//         //     theCenterPt = layer.getLatLng();
+//         //     center = [theCenterPt.lng,theCenterPt.lat];
+//         //     theRadius = layer.getRadius();
+//         //     editableLayers.addLayer(layer);
+//         //     group1.addLayer(layer);
+//         //     mymap.addLayer(group1);
+//         //    var circle = L.circle(theCenterPt, theRadius,{units: 'meters'}).addTo(editableLayers);
+//         //    bootbox.prompt({title: "Any information?", closeButton: false, callback: putTooltip});
+//         //      function putTooltip(result) {
+//         //    circle.bindTooltip(result, {'permanent': true, 'interactive': true});
+//         //    }
+//         //   //circle.enableEdit();
+//         //   if (mymap.hasLayer(group1)) {
+//         //     console.log("Cirle Draw to delete");
+//         //     mymap.removeLayer(group1);
+//         //   }
+//         //   circle.on('dblclick', L.DomEvent.stop).on('dblclick', circle.toggleEdit);
+//         //  circle.on('click', function (e) {
+//         //    circle.enableEdit();
+//         //       if ((e.originalEvent.ctrlKey || e.originalEvent.metaKey) && this.editEnabled()) {
+//         //         this.editor.newHole(e.latlng);
+//         //       }
+//         //   });
+//         // };//type circle
+//         mymap.addLayer(layer);
+//     });
+    function downloadMap(err, canvas) {
+        // var imgData = canvas.toDataURL("image/jpeg", 1.0);
+        // var dimensions = mymap.getSize();
+        // //var pdf = new jsPDF('l', 'pt', 'letter');
+        // var pdf = new jsPDF();
+        // pdf.addImage(imgData, 'PNG', 10, 10, dimensions.x * 0.5, dimensions.y * 0.5);
+        // //pdf.addImage(imgData, 'PNG',10, 10);
+        // //cover.className = '';
+        // pdf.save("mymapdownloaded.pdf");
+        var imgData = canvas.toDataURL("image/svg+xml", 1.0);
+             var dimensions = mymap.getSize();
+             var pdf = new jsPDF('l', 'pt', 'letter');
+             pdf.addImage(imgData, 'PNG', 10, 10, dimensions.x * 0.5, dimensions.y * 0.5);
+             cover.className = '';
+             pdf.save("download.pdf");
+      };
 $('#btnexport').click(function(){
   var radioValue = $("input[name='clickexport']:checked").val();
   if (radioValue==1) {
-    //export map to an image
-     printer.printMap('CurrentSize', 'MyManualPrint')
-      // leafletImage(mymap, downloadMap);
+    CustomleafletMap._export();
   }
   if (radioValue==4) {
-    //export to pdf
-      //leafletImage(mymap, downloadMap);
-      //  var imgData = document.createElement('img');
       var canvas = document.getElementById('myCanvas');
           imgData = canvas.toDataURL("image/svg+xml",1.0);
           //var dataURL = canvas.toDataURL();
-
         var dimensions = mymap.getSize();
-        //var pdf = new jsPDF('p', 'mm');
         var pdf = new jsPDF('l', 'pt', 'letter');
         pdf.addImage(imgData, 'PNG', 10, 10, dimensions.x * 0.5, dimensions.y * 0.5);
-        //pdf.addImage(imgData, 'JPG',0, 0);
-      //  pdf.addImage(imgData, 'PNG', 10, 10);
-        //snapshot.appendChild(imgData);
-      //  cover.className = '';
-//  console.log(imgData);
-  console.log(pdf);
+  //console.log(pdf);
         pdf.save("samplefile.pdf");
   }
-  console.log(radioValue);
+  //console.log(radioValue);
 });
 });//end jQuery
-
-
-const attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors';
-
-
-
-var tiles=L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?',{attribution});
-
-var mapOptions = {
-            center: [55.585901, -105.750596],
-            zoom: 4,
-
-            zoomControl: false
-         }
-         var mymap = new L.map('mymapid', mapOptions); // Creating a map object
-
-
- L.control.zoom({
-      maxZoom: 18,
-      position:'topright'
- }).addTo(mymap);
-    L.control.scale({
-      position:'topleft'
-    }).addTo(mymap);
- //console.log(mymap.getZoom());
-//mymap.setZoom(mymap.getZoom() + val_zoom);
-
-
-//--------------------------------
-// var MyCustomMarker = L.Icon.extend({
-//   options: {
-//     shadowUrl: null,
-//     iconAnchor: new L.Point(12, 12),
-//     iconSize: new L.Point(24, 24),
-//     iconUrl: 'https://upload.wikimedia.org/wikipedia/commons/6/6b/Information_icon4_orange.svg'
-//   }
-// });
-//
-// // Initialise the FeatureGroup to store editable layers
-// var editableLayers = new L.FeatureGroup();
-// mymap.addLayer(editableLayers);
-//
-// var drawPluginOptions = {
-//   position: 'topleft',
-//   draw: {
-//     polyline: {
-//       shapeOptions: {
-//         color: '#f357a1',
-//         weight: 10
-//       }
-//     },
-//     polygon: {
-//       allowIntersection: false, // Restricts shapes to simple polygons
-//       drawError: {
-//         color: '#e1e100', // Color the shape will turn when intersects
-//         message: '<strong>Polygon draw does not allow intersections!<strong> (allowIntersection: false)' // Message that will show when intersect
-//       },
-//       shapeOptions: {
-//         color: '#bada55'
-//       }
-//     },
-//     circle: false, // Turns off this drawing tool
-//     rectangle: {
-//       shapeOptions: {
-//         clickable: false
-//       }
-//     },
-//     marker: {
-//       icon: new MyCustomMarker()
-//     }
-//   },
-//   edit: {
-//     featureGroup: editableLayers, //REQUIRED!!
-//     remove: false
-//   }
-// };
-
-
-
-
-
-// Initialise the draw control and pass it the FeatureGroup of editable layers
-
-
-// var drawControl = new L.Control.Draw(drawPluginOptions);
-// mymap.addControl(drawControl);
-//
-//
-// var editableLayers = new L.FeatureGroup();
-// mymap.addLayer(editableLayers);
-// mymap.on('draw:created', function(e) {
-//   var type = e.layerType,
-//     layer = e.layer;
-//
-//   if (type === 'marker') {
-//     layer.bindPopup('A popup!');
-//   }
-//
-//   editableLayers.addLayer(layer);
-// });
-
-
-
-
-
-//---------------------------------
- tiles.addTo(mymap);
- L.control.pan({
-   position:'topright'
- }).addTo(mymap);
- var textLatLng = [65.585901,-105.750596];
-         var myTextLabel = L.marker(textLatLng, {
-             icon: L.divIcon({
-                 className: 'text-labels',   // Set class for CSS styling
-                 html: 'Canadian Territorry'
-             }),
-             zIndexOffset: 1000     // Make appear above other map features
-         });
-
-
-          L.easyButton('fa-arrows-alt', function()
-          {
-          mymap.setView([55.585901, -105.750596],4);
-          }).addTo(mymap);
-
-myTextLabel.addTo(mymap);
+//-------------------------------mapping-------------------------
 
 function getColor(d) {
   return d > 1000 ? '#800026' :
@@ -793,7 +702,7 @@ function style(feature) {
       fillOpacity: 0.7
   };
 }
-L.geoJson(CanData, {style:style}).addTo(mymap);
+//L.geoJson(CanData, {style:style}).addTo(mymap);
 
 function highlightFeature(e) {
   var layer = e.target;
@@ -822,16 +731,12 @@ function onEachFeature(feature, layer) {
 }
 
 geojson = L.geoJson(CanData, {
-  style: style,
-  onEachFeature: onEachFeature
+//  style: style,
+  //onEachFeature: onEachFeature
 }).addTo(mymap);
-
-
 
 var myLayer = L.geoJSON(ProvData);
 myLayer.addData(ProvData).addTo(mymap);
-
-
 
 var geojsonMarkerOptions = {
  radius: 10,
@@ -841,7 +746,7 @@ var geojsonMarkerOptions = {
  opacity: 1,
  fillOpacity: 0.8
 };
-//mymap.zoomControl.remove();
+
 var featuresLayer = new L.geoJSON(ProvData, {
   pointToLayer: function (feature, latlng) {
     //console.log(latlng);
@@ -852,45 +757,7 @@ var featuresLayer = new L.geoJSON(ProvData, {
   }
 });
 
-var color="#1E0602"
-var searchControl = new L.Control.Search({
-  layer: featuresLayer,
-  propertyName: 'Name',
-  position:'topleft',
-  initial: false,
-  zoom: 12,
-  marker: false,
-  moveToLocation: function(layer,latlng,  mymap) {
-    //map.fitBounds( latlng.layer.getBounds() );
-    //var zoom = mymap.getBoundsZoom(layer.getBounds());
-    //layer.getBounds();
 
-    //console.log(layer.feature);
-      //mymap.setView(latlng, 12); // access the zoom
-
-      marker = new L.Marker(new L.latLng(latlng) );//se property searched
-  //marker.bindPopup('title: '+ title );
-  featuresLayer.addLayer(marker);
-  }
-});
-
-searchControl.on('search:locationfound', function(e) {
-
-  //console.log('search:locationfound', );
-
-  //map.removeLayer(this._markerSearch)
-
-  e.layer.setStyle({fillColor: '#3f0', color: '#0f0'});
-  if(e.layer._popup)
-    e.layer.openPopup();
-
-}).on('search:collapsed', function(e) {
-  featuresLayer.eachLayer(function(layer) {	//restore feature color
-    featuresLayer.resetStyle(layer);
-  });
-});
-
-mymap.addControl( searchControl );  //inizialize search control
 
 _colors=$('._select_color_drop li');
     for (var i = _colors.length - 1; i >= 0; i--) {
@@ -913,9 +780,6 @@ _colors=$('._select_color_drop li');
 
         })
     };
-
-
 </script>
 </body>
-
 </html>
