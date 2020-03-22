@@ -9,7 +9,7 @@ var customleafletMap= (function (){
                     zoom: 4,
                     editable:true,
                     zoomControl: false
-                 },
+                               }
         mymap = new L.map('mymapid', mapOptions) // Creating a map object
          L.control.zoom({
               maxZoom: 18,
@@ -55,6 +55,17 @@ var customleafletMap= (function (){
              opacity: 1,
              fillOpacity: 0.8
            }
+           // var jsonLayer = L.geoJson(ProvData, {
+	         //    onEachFeature: function (feature, layer) {
+           //      layer.bindContextMenu({
+           //        contextmenu: true,
+	         //         contextmenuItems: [{
+	         //            text: 'Marker item'
+	         //           }]
+           //         });
+	         //        }
+           //      }).addTo(mymap)
+
             featuresLayer = new L.geoJSON(ProvData, {
                pointToLayer: function(feature, latlng) {
                  //console.log(latlng);
@@ -67,6 +78,7 @@ var customleafletMap= (function (){
              setMapId(mymap);
         return mymap
       }; //end function
+
 
   function setMapId(idmap){
     mymap=idmap;
@@ -194,12 +206,54 @@ function resetHighlight(e) {
 
 var CustomleaflteMapEdit=(function(){
   var colorSelected,
+      layersArray,
+      layer,
       editableLayers;
+      function showCoordinates (e) {
+        alert(e.latlng);
+      }
 
+  function zoomIn (e) {
+        mymap.zoomIn();
+  }
+  function zoomOut (e) {
+    mymap.zoomOut();
+  }
   function _createLine(){
     var polylineDrawer = new L.Draw.Polyline(customleafletMap.getMapId())
         polylineDrawer.enable();
      }
+  function addLabel(layer){
+  //  var layer=e.layer;
+     bootbox.prompt({title: "Any information?", closeButton: false, callback: putTooltip});
+            function putTooltip(result) {
+      layersArray.bindTooltip(result, {'permanent': true, 'interactive': true, 'direction':'center'});
+      //layer.bindTooltip(Number.parseFloat(theRadius).toString(), {'permanent': true, 'interactive': true, 'direction':'top'});
+         }
+  }
+  function deleteshape(){
+    bootbox.confirm({
+    title: "Delete confirmation?",
+    message: "Do you want to delete?,please confirm.",
+    buttons: {
+        cancel: {
+            label: '<i class="fa fa-times"></i> Cancel'
+        },
+        confirm: {
+            label: '<i class="fa fa-check"></i> Confirm'
+        }
+    },
+    callback: function (result) {
+        console.log('This was logged in the callback: ' + result);
+         layersArray.remove();
+    }
+  });
+  }
+
+  function getinformation(){
+    alert((layersArray.getRadius()/1000).toFixed(2));
+
+  }
  function _createPolygon() {
     var polygonDrawer = new L.Draw.Polygon(customleafletMap.getMapId());
         polygonDrawer.enable();
@@ -231,21 +285,46 @@ var CustomleaflteMapEdit=(function(){
        console.log("Vacio");
        colorSelected="Green"
        }
-       var type = e.layerType,
+        layersArray=e.layer;
+       var type = e.layerType;
            layer = e.layer;
            e.layer.setStyle({color: colorSelected});
            console.log(type);
-           if (type=='circle'){
-             editableLayers.addLayer(layer);
-             theRadius = layer.getRadius()/1000;
-             var _radius=Math.round(theRadius*(Math.pow(10,3)))/(Math.pow(10,3));
-             layer.bindTooltip( _radius.toFixed(2) + " Kms", {'permanent': true, 'interactive': true, 'direction':'top', 'className': "my-label"});
-         //  bootbox.prompt({title: "Any information?", closeButton: false, callback: putTooltip});
-                 //function putTooltip(result) {
-               //layer.bindTooltip(result, {'permanent': true, 'interactive': true, 'direction':'center'});
-             //  layer.bindTooltip(Number.parseFloat(theRadius).toString(), {'permanent': true, 'interactive': true, 'direction':'top'});
-             //  }
 
+             editableLayers.addLayer(layer);
+             layersArray.addTo( editableLayers);
+             layersArray.bindContextMenu({
+               contextmenu: true,
+                 contextmenuWidth: 140,
+                  contextmenuItems: [{
+                     text: 'Show coordinates',
+                      callback: showCoordinates
+                     },
+                      '-', {
+                           text: 'Zoom in',
+                             callback: zoomIn
+                            },{
+                               text: 'Zoom out',
+                                 callback: zoomOut
+                               },{
+                                 text:'Get Information',
+                                 callback: getinformation
+                               },
+                                 '-',{
+                                   text: 'Delete',
+                                   callback:deleteshape
+                                 },{
+                                   text: 'Add label',
+                                   callback:addLabel
+                                 }
+
+                              ]
+                });
+                  if (type=='circle'){
+                    theRadius = layer.getRadius()/1000;
+                    var _radius=Math.round(theRadius*(Math.pow(10,3)))/(Math.pow(10,3));
+                    console.log(_radius.toFixed(2) + " Kms");
+                  //  layersArray.bindTooltip( _radius.toFixed(2) + " Kms", {'permanent': true, 'interactive': true, 'direction':'top', 'className': "my-label"});
          }
          //   if (type=='circle'){
          //     theCenterPt = layer.getLatLng();
