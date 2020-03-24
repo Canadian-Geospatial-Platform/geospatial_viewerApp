@@ -224,28 +224,41 @@ var CustomleaflteMapEdit=(function(){
         polylineDrawer.enable();
      }
   function addLabel(layer){
-  //  var layer=e.layer;
-     bootbox.prompt({title: "Any information?", closeButton: false, callback: putTooltip});
-            function putTooltip(result) {
-      layersArray.bindTooltip(result, {'permanent': true, 'interactive': true, 'direction':'center'});
-      //layer.bindTooltip(Number.parseFloat(theRadius).toString(), {'permanent': true, 'interactive': true, 'direction':'top'});
-         }
-  }
+     bootbox.prompt({title: "Adding Label",
+                    message: "Enter a label to identify the sahpe you draw.",
+                    closeButton: true,
+                    buttons:{
+                      cancel:{
+                        label:'<i class="fa fa-times"></i> Cancel'
+                      },
+                      confirm:{
+                        label:'<i class="fa fa-check"></i> Add'
+                      }
+                    },
+                     callback: function putTooltip(result) {
+                       if (result !== null){
+                         layersArray.bindTooltip(result, {'permanent': true, 'interactive': true, 'direction':'center'});
+                       }
+                       //layer.bindTooltip(Number.parseFloat(theRadius).toString(), {'permanent': true, 'interactive': true, 'direction':'top'});
+                       }
+                   });
+               }
   function deleteshape(){
     bootbox.confirm({
     title: "Delete confirmation?",
-    message: "Do you want to delete?,please confirm.",
+    message: "Do you want to delete?,Please confirm.",
     buttons: {
         cancel: {
-            label: '<i class="fa fa-times"></i> Cancel'
+            label: '<i class="fa fa-times"></i> No'
         },
         confirm: {
-            label: '<i class="fa fa-check"></i> Confirm'
+            label: '<i class="fa fa-check"></i> Yes'
         }
     },
     callback: function (result) {
-        console.log('This was logged in the callback: ' + result);
-         layersArray.remove();
+        if (result==true) {
+                 layersArray.remove();
+               }
     }
   });
   }
@@ -281,9 +294,10 @@ var CustomleaflteMapEdit=(function(){
   function drawshape(){
     mymap.on('draw:created', function (e) {
      console.log("on draw created event");
-     if (colorSelected=='undefined') {
+     console.log(colorSelected);
+     if (colorSelected==null) {
        console.log("Vacio");
-       colorSelected="Green"
+       colorSelected="Brown"
        }
         layersArray=e.layer;
        var type = e.layerType;

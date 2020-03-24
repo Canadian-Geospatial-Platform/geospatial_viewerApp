@@ -35,7 +35,6 @@
         </div>
       </div>
       <div class="sidebar-header">
-
         <h5 style="color:white">Geospatial Viewer Map</h5>
       </div>
       <!-- aqu comienza -->
@@ -206,9 +205,8 @@
                             </label>
                            </li>
                               </ul>
-
                                 <div class="col-md-4">
-                              <button class="btn btn-round-xs btn-xs mr-2 mb-2 btn-icon btn-outline-primary" id="btnexport" >
+                                <button class="btn btn-round-xs btn-xs mr-2 mb-2 btn-icon btn-outline-primary" id="btnexport" >
                                 <span class="btn-inner-icon"><i class="fa fa-file-export"></i></span>
                                 <span class="btn-inner-text">Apply</span>
                               </button>
@@ -227,8 +225,8 @@
                             </a>
                             <div class="sidebar-submenu center">
                               <div class="dropdown">
-                                <button class="btn _select_color dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Green
-                                  <span _text_display="Green" class="color green"></span>
+                                <button class="btn _select_color dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Brown
+                                  <span _text_display="Brown" class="color brown"></span>
                                 </button>
                                     <ul class="dropdown dropdown-menu _select_color_drop" aria-labelledby="dropdownMenu1">
                                     <li><span _text_display="Green" class="color green"></span></li>
@@ -244,7 +242,7 @@
                                     <li><span _text_display="PURPLE" class="color PURPLE"></span></li>
                                     <li><span _text_display="OLIVE" class="color OLIVE"></span></li>
                                     <li><span _text_display="LIME" class="color LIME"></span></li>
-                                   <input type="hidden" name="_color" value="Green">
+                                   <input type="hidden" name="_color" value="Brown">
                                 </ul>
                             </div>  <br>
                                   <button  class="btn  btn-sm cust-btn btn-outline-danger" type="button" id="btn-drawLine" name="btndrawline" value="DrawLine">Draw Line</button>
@@ -295,30 +293,25 @@
               </div><!-- row -->
             </div> <!--col-->
           </div> <!-- container -->
-      <!-- aqui termina -->
-      <!-- sidebar-header  -->
-      <!-- sidebar-search  -->
-      <!-- sidebar-menu  -->
+
     </div>
-    <!-- sidebar-content  -->
     <div class="sidebar-footer">
-      <!-- <button class="btn mr-2 mb-2 btn-icon-only btn-outline-primary" type="button">
-         <span class="btn-inner-icon"><i class="fa fa-file-export"></i></span>
+      <button class="btn mr-2 mb-2 btn-icon-only btn-outline-primary" type="button" id="btnmapConfig" data-toggle="tooltip" data-placement="top" title="map configuration">
+         <span class="btn-inner-icon"><i class="fa fa-cog"></i></span>
       </button>
-      <a href="#">
+      <!-- <a href="#">
         <i class="fa fa-envelope"></i>
         <span class="badge badge-pill badge-success notification">7</span>
       </a>
       <a href="#">
         <i class="fa fa-cog"></i>
         <span class="badge-sonar"></span>
-      </a>
-      <a href="#">
+      </a> -->
+      <!-- <a href="#">
         <i class="fa fa-power-off"></i>
       </a> -->
     </div>
   </nav>
-  <!-- sidebar-wrapper  -->
   <main class="page-content">
     <div class="container-fluid">
       <h2>Canadian Territory Map</h2>
@@ -330,8 +323,7 @@
               <button type="buttons" id="allbus" class="btn btn-success">All</button>
               <button type="buttons" id="others" class="btn btn-primary">Others</button>
               <button type="buttons" id="cafes" class="btn btn-danger">Cafes</button>
- </div>
-            </div> -->
+           </div>           -->
         </div>
         <!-- <div class="form-group col-md-12">
           <iframe src="https://ghbtns.com/github-btn.html?user=azouaoui-med&repo=pro-sidebar-template&type=star&count=true&size=large"
@@ -356,39 +348,33 @@
         integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
         crossorigin=""></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
         <script src="plugins/leaflet-search/src/leaflet-search.js"></script>
         <script src="plugins/Leaflet-EaziButtons/src/leaflet-EaziButtons.js"></script>
         <script src="plugins/Leaflet-Pancontrol/src/L.Control.Pan.js"></script>
         <script src="plugins/Leaflet.Icon.Glyph/Leaflet.Icon.Glyph.js"></script>
         <script src="plugins/Leaflet.Editable/src/Leaflet.Editable.js"></script>
-         <script src="//npmcdn.com/leaflet.path.drag/src/Path.Drag.js"></script>
-        <!-- <script src="plugins/Leaflet-Draw/src/Leaflet.draw.js"></script> -->
+        <script src="//npmcdn.com/leaflet.path.drag/src/Path.Drag.js"></script>
         <script src="plugins/leaflet-eazyprinter/bundle.js"></script>
         <script src="plugins/Leaflet-ContextMenu/src/leaflet.contextmenu.js"></script>
           <script src="Data/canada.js" type="text/javascript"></script>
           <script src="Data/e.js" type="text/javascript"></script>
           <script src="js/CustomLeafletMap.js" type="text/javascript"></script>
           <script src="https://unpkg.com/leaflet-image@latest/leaflet-image.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha256-DupmmuWppxPjtcG83ndhh/32A9xDMRFYkGOVzvpfSIk=" crossorigin="anonymous"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js" integrity="sha256-gJWdmuCRBovJMD9D/TVdo4TIK8u5Sti11764sZT1DhI=" crossorigin="anonymous"></script>
-  <script>L_PREFER_CANVAS = true</script>
-
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script> -->
+          <script>L_PREFER_CANVAS = true</script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
         <script src="https://unpkg.com/esri-leaflet@2.3.3/dist/esri-leaflet.js"
-        integrity="sha512-cMQ5e58BDuu1pr9BQ/eGRn6HaR6Olh0ofcHFWe5XesdCITVuSBiBZZbhCijBe5ya238f/zMMRYIMIIg1jxv4sQ=="
-        crossorigin=""></script>
-<script type="text/javascript">
-
-var mymap=customleafletMap.initialization();
-
-  jQuery(function ($) {
-      //var arr=[];
+        integrity="sha512-cMQ5e58BDuu1pr9BQ/eGRn6HaR6Olh0ofcHFWe5XesdCITVuSBiBZZbhCijBe5ya238f/zMMRYIMIIg1jxv4sQ=="  crossorigin=""></script>
+      <script type="text/javascript">
+      var mymap=customleafletMap.initialization();
+                CustomleaflteMapEdit.dropdownColor();
+                mymap.scrollWheelZoom.disable();
+    jQuery(function ($) {
     $(".sidebar-dropdown > a").click(function() {
     $(".sidebar-submenu").slideUp(200);
-  if (
+   if (
     $(this)
       .parent()
       .hasClass("active")
@@ -419,12 +405,10 @@ let dropdown = $('#locality-dropdown');
 dropdown.empty();
 dropdown.append('<option selected="true" disabled>Choose State/Province</option>');
 dropdown.prop('selectedIndex', 0);
-const url = 'https://api.myjson.com/bins/7xq2x';
-const url1='https://api.myjson.com/bins/xz1dc';
-const url2='https://api.myjson.com/bins/1akrv0';
-$.getJSON(url2, function (data) {
+
+const url='https://api.myjson.com/bins/1akrv0';
+$.getJSON(url, function (data) {
   $.each(data, function (key, entry) {
-    //console.log(entry);
     dropdown.append($('<option></option>').attr('value', entry.short).text(entry.name));
   })
 });
@@ -432,20 +416,15 @@ $.getJSON(url2, function (data) {
   $('#locality-dropdown').change(function() {
         var val2 = this.value;
         console.log(val2);
-        customleafletMap.MoveMarketSelected(url2,val2);
+        customleafletMap.MoveMarketSelected(url,val2);
       });
 
     $(".clickmap").click(function(){
       customleafletMap.selectBasemap(this.value,mymap);
     });
-
-
-
-
   $("#btn-drawPolygon").click(function() {
         CustomleaflteMapEdit.CreateShape("polygon");
     });
-
   $("#btn-drawCircle").click(function() {
       CustomleaflteMapEdit.CreateShape("circle");
   });
@@ -455,7 +434,6 @@ $.getJSON(url2, function (data) {
   mymap.on('editable:editing', function (e) {
         e.layer.setStyle({color: 'DarkBlue'});
     });
-
   $("#btn-editLayers").click(function(){
     console.log("Edit Layers");
    });
@@ -463,10 +441,13 @@ $(".btn-outline-danger").click(function(){
   $(this).addClass('focus').siblings().removeClass('focus');
 });
 
-
-
- CustomleaflteMapEdit.dropdownColor();
-
+ $('#btnexport').click(function(){
+   var radioValue = $("input[name='clickexport']:checked").val();
+      customleafletMap.export();
+    });
+ $('#btnmapConfig').click(function(){
+   alert('Map configuration');
+ });
  // mymap.on('draw:created', function (e) {
  //  console.log("on draw created event");
  //    var type = e.layerType,
@@ -585,10 +566,7 @@ $(".btn-outline-danger").click(function(){
 //         mymap.addLayer(layer);
 //     });
 
-$('#btnexport').click(function(){
-  var radioValue = $("input[name='clickexport']:checked").val();
-     customleafletMap.export();
-   });
+
 });//end jQuery
 </script>
 </body>
